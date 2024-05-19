@@ -1,44 +1,50 @@
+// Cards.tsx
+import Button from "../Button";
+import { Tag } from "../Tag";
+import * as S from "./styles";
 
-import Button from '../Button'
-import { Tag } from '../Tag'
-import { Card, CardContainer, Category, Description, Title, Rating, HeaderText, Infos } from './styles'
+import star from "../../assets/star.png"
 
 type Props = {
-    title: string
-    description: string
-    emphasis?: string
-    category: string
-    rating: string
-    image: string
-    starImage: string
-}
+  title: string;
+  description: string;
+  emphasis?: string;
+  category: string;
+  rating: string;
+  image: string;
+  starImage?: string;
+};
 
-export const Cards = ({ title, description, category, rating, image, starImage, emphasis }: Props) => {
+export const Cards = ({
+  title,
+  description,
+  category,
+  rating,
+  image,
+  emphasis,
+}: Props) => {
   return (
-    <Card>
-        <Category>
-            <img src={image} alt="" />
-            <Infos>
-            {emphasis && <Tag size='big'>{emphasis}</Tag>}
-            <Tag>{category}</Tag>
-            </Infos>
-        </Category>
-       <CardContainer>
-        <HeaderText>
-            <Title>{title}</Title>
-            <Rating>
+    <S.Card>
+      
+        <S.ImageCard src={image} alt="" />
+     
+      <S.CardContainer>
+        <S.Infos>
+          {emphasis && <Tag size="big">{emphasis}</Tag>}
+          <Tag>{category}</Tag>
+        </S.Infos>
+        <S.HeaderText>
+          <S.Title>{title}</S.Title>
+          <S.Rating>
             <h3>{rating}</h3>
-            <img src={starImage} alt="" />
-            </Rating>
-        </HeaderText>
-        <Description>{description}</Description>
-        <Button 
-        to='/perfil'
-        title='Acessar o cardápio'
-        >
+           <img src={star} alt="Star rating" />
+          </S.Rating>
+        </S.HeaderText>
+        <S.Description>{description}</S.Description>
+        <Button to="/perfil" title="Acessar o cardápio">
           Saiba mais
         </Button>
-       </CardContainer>
-    </Card>
-  )
-}
+      </S.CardContainer>
+    </S.Card>
+  );
+};

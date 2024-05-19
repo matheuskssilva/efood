@@ -1,15 +1,15 @@
 
 import Logo from '../../assets/logo.svg'
-import { HeaderContainer, InnerContainer, LinkRestaurant, TextCart } from './styles'
+import * as S from './styles'
 
 export const Header = () => {
   return (
-    <HeaderContainer>
-        <InnerContainer>
-            <LinkRestaurant to='/'>Restaurantes</LinkRestaurant>
+    <S.HeaderContainer>
+        <S.InnerContainer>
+            <S.LinkRestaurant to='/'>Restaurantes</S.LinkRestaurant>
             <img src={Logo} alt="" />
-            <TextCart>0 produto(s) no carrinho</TextCart>
-        </InnerContainer>
-    </HeaderContainer>
+            <S.TextCart>0 produto(s) no carrinho</S.TextCart>
+        </S.InnerContainer>
+    </S.HeaderContainer>
   )
 }

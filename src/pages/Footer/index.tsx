@@ -4,15 +4,15 @@ import logo from '../../assets/logo.svg'
 import instagram from '../../assets/instagram.svg'
 import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
-import { Div, FooterContent, Links, Copy } from './styles'
+import * as S from './styles'
 
 
 export const Footer = () => {
   return (
-    <FooterContent>
-        <Div>
+    <S.FooterContent>
+        <S.Div>
         <img src={logo} alt="Logo Efood" />
-        <Links>
+        <S.Links>
             <li>
                 <Link to="/"><img src={instagram} alt="" /></Link>
             </li>
@@ -22,9 +22,9 @@ export const Footer = () => {
             <li>
                 <Link to="/"><img src={twitter} alt="" /></Link>
             </li>
-        </Links>
-            <Copy>A efood é uma plataforma para divulgação de estabelecimentos, a responsabilidade pela entrega, qualidade <br />dos produtos é toda do estabelecimento contratado. </Copy>
-        </Div>
-    </FooterContent>
+        </S.Links>
+            <S.Copy>A efood é uma plataforma para divulgação de estabelecimentos, a responsabilidade pela entrega, qualidade <br />dos produtos é toda do estabelecimento contratado. </S.Copy>
+        </S.Div>
+    </S.FooterContent>
   )
 }

@@ -1,28 +1,27 @@
-import Menu from "../../models/Menu";
+// CardsList.tsx
+import { Restaurant } from "../../pages/Home/menu";
 import { Cards } from "../Cards";
-import { CardContainer, Container } from "./styles";
+import * as S from "./styles";
 
 type Props = {
-  menuRestaurant: Menu[]
+  cardapio: Restaurant[]
 };
 
-const CardsList = ({ menuRestaurant }: Props) => (
-    <Container>
-  <CardContainer className="container">
-    {menuRestaurant.map((menu) => (
+const CardsList = ({ cardapio }: Props) => (
+  <S.Container>
+    <S.CardContainer className="container">
+      {cardapio.map((restaurant) => (
         <Cards
-        key={menu.id}
-        image={menu.image}
-        emphasis={menu.emphasis}
-        category={menu.category}
-        description={menu.description}
-        rating={menu.rating}
-        starImage={menu.starImage}
-        title={menu.title}
-      />
-    ))}
-  </CardContainer>
-    </Container>
+          key={restaurant.id}
+          image={restaurant.capa}
+          category={restaurant.tipo}
+          description={restaurant.descricao}
+          rating={restaurant.avaliacao}
+          title={restaurant.titulo}
+        />
+      ))}
+    </S.CardContainer>
+  </S.Container>
 );
 
 export default CardsList;

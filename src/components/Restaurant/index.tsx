@@ -1,4 +1,4 @@
-import { ButtonCart, Card, Content, Description, Photo, Title } from "./styles"
+import * as S from "./styles"
 
 
 export type Props = {
@@ -8,15 +8,20 @@ export type Props = {
 }
 
 export const Restaurante = ({ title, description, image }: Props) => {
+  const getDescription  = (descricao: string) => {
+    if (descricao.length > 140) {
+      return descricao.slice(0, 140) + '...'
+    }
+  }
   return (
-    <Card>
-        <Content>
-          <Photo src={image} />
-          <Title>{title}</Title>
-          <Description>{description}</Description>
-          <ButtonCart>Adicionar ao carrinho</ButtonCart>
-        </Content>
-    </Card>
+    <S.Card>
+        <S.Content>
+          <S.Photo src={image} />
+          <S.Title>{title}</S.Title>
+          <S.Description>{getDescription(description)}</S.Description>
+          <S.ButtonCart>Adicionar ao carrinho</S.ButtonCart>
+        </S.Content>
+    </S.Card>
   )
 }
 

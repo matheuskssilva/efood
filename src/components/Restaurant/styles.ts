@@ -6,6 +6,9 @@ export const Card = styled.div`
     color: ${colors.bege};
     display: flex;
     flex-direction: column;
+    width: 320px;
+    height: 338px;
+   
 `
 
 export const Content = styled.div`
@@ -13,10 +16,13 @@ export const Content = styled.div`
     flex-direction: column;
     gap: 8px;
     margin: 8px
+
+
 `
 
 export const Photo = styled.img`
     margin: 8;
+    height: 167px;
 `
 
 export const Title = styled.h2`

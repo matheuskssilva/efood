@@ -1,13 +1,13 @@
 import React from 'react'
-import { PresentationContainer, Category, Dish } from './styles'
+import * as S from './styles'
 
 export const Presentation = () => {
   return (
-    <PresentationContainer>
+    <S.PresentationContainer>
         <div className="container">
-            <Category>Italiana</Category>
-            <Dish>La Dolce Vita Trattoria</Dish>
+            <S.Category>Italiana</S.Category>
+            <S.Dish>La Dolce Vita Trattoria</S.Dish>
         </div>
-    </PresentationContainer>
+    </S.PresentationContainer>
   )
 }

@@ -5,6 +5,7 @@ export const CardContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     column-gap: 80px;
     row-gap: 48px;
+    
 `
 
 export const Container = styled.div`

@@ -1,26 +1,28 @@
+// styles.ts
 import styled from "styled-components";
 import { colors } from "../../styles";
 
-
 export const Card = styled.div`
-    max-width: 472px;
-    width: 100%;
-    height: 398px;
-    border: 1px solid ${colors.rose};
-    background-color: ${colors.white};
-    position: relative;
+  max-width: 472px;
+  width: 100%;
+  border: 1px solid ${colors.rose};
+  background-color: ${colors.white};
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+`;
+
+export const ImageCard = styled.img`
+    height: 217px;
 `
 
 export const CardContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 8px 16px;
-`
+  display: flex;
+  flex-direction: column;
+  padding: 7px 8px;
+`;
 
-export const Category = styled.div`
-    display: flex;
-    justify-content: space-between;
-`
 
 export const Infos = styled.div`
     position: absolute;
@@ -53,6 +55,7 @@ export const HeaderText = styled.div`
 
 export const Rating = styled.div`
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     gap: 8px;
