@@ -13,6 +13,7 @@ type Props = {
   rating: string;
   image: string;
   starImage?: string;
+  id: number
 };
 
 export const Cards = ({
@@ -22,6 +23,7 @@ export const Cards = ({
   rating,
   image,
   emphasis,
+  id
 }: Props) => {
   return (
     <S.Card>
@@ -41,7 +43,7 @@ export const Cards = ({
           </S.Rating>
         </S.HeaderText>
         <S.Description>{description}</S.Description>
-        <Button to="/perfil" title="Acessar o cardápio">
+        <Button to={`/perfil/${id}`} title="Acessar o cardápio">
           Saiba mais
         </Button>
       </S.CardContainer>

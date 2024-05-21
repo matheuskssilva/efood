@@ -1,13 +1,18 @@
-import React from 'react'
-import * as S from './styles'
+import React from 'react';
+import * as S from './styles';
+import { Restaurant } from '../../pages/Home/menu';
 
-export const Presentation = () => {
+type Props = {
+  restaurant: Restaurant;
+};
+
+export const Presentation = ({ restaurant }: Props) => {
   return (
-    <S.PresentationContainer>
-        <div className="container">
-            <S.Category>Italiana</S.Category>
-            <S.Dish>La Dolce Vita Trattoria</S.Dish>
-        </div>
+    <S.PresentationContainer style={{ backgroundImage: `url(${restaurant.capa})` }}>
+      <div className="container">
+        <S.Category>{restaurant.tipo}</S.Category>
+        <S.Dish>{restaurant.titulo}</S.Dish>
+      </div>
     </S.PresentationContainer>
-  )
-}
+  );
+};

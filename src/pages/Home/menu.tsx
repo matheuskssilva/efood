@@ -2,25 +2,27 @@ import { useState, useEffect } from "react";
 
 import CardsList from "../../components/CardsList";
 
+
 export type Cardapio = {
-    foto: string;
-    preco: number;
-    id: number;
-    nome: string;
-    descricao: string;
-    porcao: string;
+  foto: string;
+  preco: number;
+  id: number;
+  nome: string;
+  descricao: string;
+  porcao: string;
 };
 
+
 export type Restaurant = {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: string
-  descricao: string
-  capa: string
-  cardapio: Cardapio[]
-}
+  id: number;
+  titulo: string;
+  destacado: boolean;
+  tipo: string;
+  avaliacao: string;
+  descricao: string;
+  capa: string;
+  cardapio: Cardapio[];
+};
 
 export const MenuList = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);

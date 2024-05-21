@@ -1,29 +1,22 @@
-
-import { Restaurant } from '../../pages/Home/menu'
-import { Restaurante } from '../Restaurant'
-import * as S from './styles'
+import { Cardapio } from '../../pages/Home/menu';
+import { Restaurante } from '../Restaurant';
+import * as S from './styles';
 
 type Props = {
-    restaurant: Restaurant[]
-}
+  cardapio: Cardapio[];
+};
 
-export const RestaurantList = ({ restaurant }: Props) => {
-  
-  return (
-   <S.Container>
+export const RestaurantList = ({ cardapio }: Props) => (
+  <S.Container>
     <S.RestaurantContainer className='container'>
-    {restaurant.map((restaurants) => (
-       <Restaurante
-         key={restaurants.id}
-         title={restaurants.titulo}
-         description={restaurants.descricao}
-         image={restaurants.capa}
-       />
-     ))}
+      {cardapio.map((item) => (
+        <Restaurante
+          key={item.id}
+          title={item.nome}
+          description={item.descricao}
+          image={item.foto}
+        />
+      ))}
     </S.RestaurantContainer>
-
-   </S.Container>
- )
-}
-
-
+  </S.Container>
+);

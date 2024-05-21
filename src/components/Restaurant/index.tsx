@@ -9,8 +9,8 @@ export type Props = {
 
 export const Restaurante = ({ title, description, image }: Props) => {
   const getDescription  = (descricao: string) => {
-    if (descricao.length > 140) {
-      return descricao.slice(0, 140) + '...'
+    if (descricao.length > 100) {
+      return descricao.slice(0, 100) + '...'
     }
   }
   return (

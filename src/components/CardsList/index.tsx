@@ -12,6 +12,7 @@ const CardsList = ({ cardapio }: Props) => (
     <S.CardContainer className="container">
       {cardapio.map((restaurant) => (
         <Cards
+          id={restaurant.id}
           key={restaurant.id}
           image={restaurant.capa}
           category={restaurant.tipo}
