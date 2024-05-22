@@ -15,6 +15,8 @@ export const RestaurantList = ({ cardapio }: Props) => (
           title={item.nome}
           description={item.descricao}
           image={item.foto}
+          porcao={item.porcao}
+          price={item.preco}
         />
       ))}
     </S.RestaurantContainer>
