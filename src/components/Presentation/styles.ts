@@ -1,18 +1,32 @@
 import styled from "styled-components";
 
-import ApresentacaoFundo from '../../assets/background2.png'
+
 import { colors } from "../../styles";
 
 
 export const PresentationContainer = styled.div`
-  background-image: url(${ApresentacaoFundo});
   height: 280px;
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: relative;
+  z-index: 1;
+
+  ::after {
+   position: absolute;
+   top: 0;
+   left: 0%;
+   width: 100%;
+   height: 280px;
+   content: '';
+   background-color: rgba(0, 0, 0, 0.3);
+   z-index: -1;
+ }
+  
   .container {
     max-width: 1024px;
     margin: 0 auto;
   }
+  
+  
+  
 `
 export const Category = styled.h3`
     font-size: 32px;
@@ -29,3 +43,4 @@ export const Dish = styled.h3`
     line-height: 37px;
     padding-top: 157px;
 `
+
