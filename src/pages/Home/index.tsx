@@ -1,5 +1,3 @@
-
-import { useParams } from "react-router-dom";
 import { Hero } from "../../components/Hero";
 import { MenuList } from "./menu";
  

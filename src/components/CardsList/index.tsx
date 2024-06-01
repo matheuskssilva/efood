@@ -4,13 +4,13 @@ import { Cards } from "../Cards";
 import * as S from "./styles";
 
 type Props = {
-  cardapio: Restaurant[]
+  restaurant: Restaurant[];
 };
 
-const CardsList = ({ cardapio }: Props) => (
+const CardsList = ({ restaurant }: Props) => (
   <S.Container>
     <S.CardContainer className="container">
-      {cardapio.map((restaurant) => (
+      {restaurant.map((restaurant) => (
         <Cards
           id={restaurant.id}
           key={restaurant.id}
