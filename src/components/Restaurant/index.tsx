@@ -2,6 +2,10 @@ import * as S from "./styles"
 
 import close from '../../assets/close.png'
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { add, open } from "../../store/reducers/cart"
+import { Cardapio, Restaurant } from "../../pages/Home/menu"
+
 
 export type Props = {
     title: string
@@ -9,9 +13,18 @@ export type Props = {
     porcao: string
     image: string
     price: number
+    cardapio: Cardapio
 }
 
-export const Restaurante = ({ title, description, image, porcao, price }: Props) => {
+export const Restaurante = ({ title, description, image, porcao, price, cardapio }: Props) => {
+  const dispatch = useDispatch()
+
+  const addCart = () => {
+    dispatch(add(cardapio))
+    dispatch(open())
+    setIsVisible(false)
+  }
+
   const [isVisible, setIsVisible] = useState(false)
   const getDescription  = (descricao: string) => {
     if (descricao.length > 100) {
@@ -56,7 +69,7 @@ export const Restaurante = ({ title, description, image, porcao, price }: Props)
         </div>
         <p>{description}</p>
           <p>Serve: {porcao}</p>
-          <button >{`Adicionar ao carrinho - ${formatPrice(price)}`}</button>
+          <button onClick={addCart}>{`Adicionar ao carrinho - ${formatPrice(price)}`}</button>
       </div>
     </div>
    </S.ModalContent>

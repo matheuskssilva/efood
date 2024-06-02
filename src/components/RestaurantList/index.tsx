@@ -17,6 +17,7 @@ export const RestaurantList = ({ cardapio }: Props) => (
           image={item.foto}
           porcao={item.porcao}
           price={item.preco}
+          cardapio={item}
         />
       ))}
     </S.RestaurantContainer>

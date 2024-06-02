@@ -10,7 +10,12 @@ export const CartContainer = styled.div`
     width: 100%;
     height: 100%;
     justify-content: flex-end;
-    display: flex;
+    display: none;
+    z-index: 1;
+    
+    &.is-open{
+        display: flex;
+    }
 `
 export const Overlay = styled.div`
   position: absolute;
@@ -30,6 +35,12 @@ export const SideBar = styled.aside`
     padding: 32px 8px;
     z-index: 1;
     
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 `
 
 export const CartItem = styled.li`
@@ -38,6 +49,7 @@ export const CartItem = styled.li`
     max-width: 344px;
     width: 100%;
     padding: 8px;
+    position: relative;
 
     img {
     width: 80px;
@@ -62,6 +74,11 @@ export const CartItem = styled.li`
             cursor: pointer;
             background-color: transparent ;
         }
+    }
+
+    button {
+        position: absolute;
+        left: 200px;
     }
 
 `
