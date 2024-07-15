@@ -106,4 +106,5 @@ export const Button = styled.button`
     text-align: center;
     border: none;
     cursor: pointer;
+   
 `

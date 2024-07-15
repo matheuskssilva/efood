@@ -5,7 +5,8 @@ export const colors = {
     white: '#FFFFFF',
     white2: '#FFF8F2',
     bege: '#FFEBD9',
-    rose: '#E66767'
+    rose: '#E66767',
+    red: '##FF002B'
   }
 export const GlobalCss = createGlobalStyle`
     * {
