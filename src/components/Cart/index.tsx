@@ -5,6 +5,7 @@ import { close, remove } from "../../store/reducers/cart";
 import { RootReducer } from "../../store";
 import { useState } from "react";
 import { Checkout } from "../Checkout";
+import { formatPrice, getAmount } from "../../utils";
 
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -20,18 +21,6 @@ export const Cart = () => {
     dispatch(remove(id));
   };
 
-  const formatPrice = (price = 0) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(price);
-  };
-
-  const getAmount = () => {
-    return items.reduce((accumulator, valueCurrent) => {
-      return (accumulator += valueCurrent.preco!);
-    }, 0);
-  };
 
   return (
     <>
@@ -57,14 +46,14 @@ export const Cart = () => {
               </ul>
               <S.Price>
                 <h3>Valor total</h3>
-                <span>{formatPrice(getAmount())}</span>
+                <span>{formatPrice(getAmount(items))}</span>
               </S.Price>
               <S.Button onClick={() => setPayment(true)} disabled={isCartEmpty}>
                 Continuar com a entrega
               </S.Button>
             </>
           ) : (
-            <Checkout setPayment={setPayment} />
+            <Checkout setPayment={setPayment} items={items} />
           )}
         </S.SideBar>
       </S.CartContainer>
