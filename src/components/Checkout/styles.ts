@@ -8,8 +8,8 @@ type InputProps = {
 
 export const CheckoutContainer = styled.form`
     color: ${colors.bege};
-    h3 {
-        font-size: 14px;
+    h2 {
+        font-size: 16px;
         font-weight: bold;
     }
 
@@ -18,6 +18,7 @@ export const CheckoutContainer = styled.form`
         font-weight: bold;
         margin-bottom: 8px;
     }
+    
 
     .flex {
         display: flex;
@@ -42,9 +43,12 @@ export const InputGroup = styled.div<InputProps>`
     border: none;
     height: 32px;
 
+    
+
     &.error {
-      border: 1px solid red;
+      border: 2px solid red;
       background-color: ${colors.red};
+      box-shadow: 2px 2px;
     }
   }
 `
