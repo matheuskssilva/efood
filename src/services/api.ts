@@ -17,6 +17,7 @@ type PurchasePayload = {
             number: number
             complement?: string
         }
+    }
         payment: {
             card: {
                 name?: string
@@ -28,10 +29,8 @@ type PurchasePayload = {
                 }
             }
         }    
-        
-
     }
-}
+
 
 type PurchaseResponse = {
     orderId: string

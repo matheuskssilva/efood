@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Cardapio } from "../../pages/Home/menu";
 import { formatPrice, getAmount } from "../../utils";
 import ReactInputMask from "react-input-mask";
+import { useNavigate } from 'react-router-dom'
 
 
 export const Checkout = ({
@@ -16,8 +17,13 @@ export const Checkout = ({
   setPayment: (value: boolean) => void;
   items: Cardapio[]
 }) => {
-  const [purchase, { isLoading}] = usePurchaseMutation();
+  const [purchase, { isLoading, isSuccess, data}] = usePurchaseMutation();
   const [formAdress, setFormAdress] = useState(false);
+  const navigate = useNavigate()
+
+  const handleCompleteOrder = () => {
+    navigate('/')
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -62,12 +68,6 @@ export const Checkout = ({
     }),
     onSubmit: (values) => {
       purchase({
-        products: [
-          {
-            id: 1,
-            price: 10,
-          },
-        ],
         delivery: {
           receiver: values.nameOwner,
           address: {
@@ -77,6 +77,7 @@ export const Checkout = ({
             number: Number(values.number),
             complement: values.complement,
           },
+        },
           payment: {
             card: {
               name: values.nameOwner,
@@ -88,12 +89,17 @@ export const Checkout = ({
               },
             },
           },
-        },
         
+        products: [
+          {
+            id: 1,
+            price: 10,
+          },
+        ],
       });
     },
   });
-
+  
   const checkoutInputHasError = (fieldName: string) => {
     const isTouched = fieldName in formik.touched;
     const isInvalid = fieldName in formik.errors;
@@ -118,7 +124,7 @@ export const Checkout = ({
     }
   };
 
-  return (
+  return !isSuccess ? (
     <div className="container">
       
       <S.CheckoutContainer onSubmit={formik.handleSubmit}>
@@ -186,7 +192,7 @@ export const Checkout = ({
               </div>
           <div className="button-container">
               <Button type="submit" >
-              {isLoading ? 'Finalizando o pagamento' : 'Finalizar Pagamento'}
+              {isLoading ? 'Finalizando o pagamento...' : 'Finalizar Pagamento'}
               </Button>
               <Button type="button" onClick={() => setFormAdress(false)}>
               Voltar para a edição de endereço
@@ -272,5 +278,18 @@ export const Checkout = ({
     </S.CheckoutContainer>
   
     </div>
-  );
-};
+  ) : (
+    <>
+      <S.CheckoutContainer onClick={handleCompleteOrder}>
+      <h2>Pedido Realizado - {data?.orderId}</h2>
+          <div className="dFlex marginTop">
+              <p>Estamos felizes em informar que seu pedido já está em processo de preparação e, em breve, será entregue no endereço fornecido.</p>
+              <p>Gostaríamos de ressaltar que nossos entregadores não estão autorizados a realizar cobranças extras. </p>
+              <p>Lembre-se da importância de higienizar as mãos após o recebimento do pedido, garantindo assim sua segurança e bem-estar durante a refeição.</p>
+              <p>Esperamos que desfrute de uma deliciosa e agradável experiência gastronômica. Bom apetite!</p>
+          <button>Concluir</button>
+          </div>
+      </S.CheckoutContainer>
+    </>
+  )
+}

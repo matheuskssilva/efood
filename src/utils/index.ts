@@ -1,4 +1,8 @@
+
 import { Cardapio } from "../pages/Home/menu";
+import { close } from "../store/reducers/cart";
+
+
 
 export const formatPrice = (price = 0) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -12,3 +16,4 @@ export  const getAmount = (items: Cardapio[]) => {
       return (accumulator += valueCurrent.preco!);
     }, 0);
   };
+

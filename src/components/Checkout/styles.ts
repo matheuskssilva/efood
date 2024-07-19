@@ -26,6 +26,33 @@ export const CheckoutContainer = styled.form`
         gap: 34px;
     }
 
+    .dFlex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+
+      p {
+        width: 344px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      button {
+        width: 344px;
+        height: 24px;
+        color: ${colors.rose};
+        background-color: ${colors.bege};
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16px;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
     .marginTop {
         margin-top: 16px;
     }
