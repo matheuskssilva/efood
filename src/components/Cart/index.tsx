@@ -6,11 +6,13 @@ import { RootReducer } from "../../store";
 import { useState } from "react";
 import { Checkout } from "../Checkout";
 import { formatPrice, getAmount } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
   const [payment, setPayment] = useState(false);
+  const navigate = useNavigate()
 
   const isCartEmpty = items.length === 0;
 
@@ -20,6 +22,12 @@ export const Cart = () => {
   const removeItem = (id: number) => {
     dispatch(remove(id));
   };
+
+  const handleRedirect = () => {
+    closeCart()
+    navigate('/')
+  }
+
 
 
   return (
@@ -44,13 +52,23 @@ export const Cart = () => {
                   </S.CartItem>
                 ))}
               </ul>
-              <S.Price>
-                <h3>Valor total</h3>
-                <span>{formatPrice(getAmount(items))}</span>
-              </S.Price>
-              <S.Button onClick={() => setPayment(true)} disabled={isCartEmpty}>
+             
+               {isCartEmpty ? (
+                <div>
+                    <h3 className="h3">Seu carrinho está vazio...</h3>
+                    <S.Button onClick={handleRedirect}>Adicionar item</S.Button>
+                </div>
+               ) : (
+                <>
+                 <S.Price>
+                   <h3>Valor total</h3>
+                   <span>{formatPrice(getAmount(items))}</span>
+                   </S.Price>
+                   <S.Button onClick={() => setPayment(true)}>
                 Continuar com a entrega
               </S.Button>
+                </>
+               )}
             </>
           ) : (
             <Checkout setPayment={setPayment} items={items} />

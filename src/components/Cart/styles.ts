@@ -16,6 +16,12 @@ export const CartContainer = styled.div`
     &.is-open{
         display: flex;
     }
+
+   .h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: ${colors.bege};
+   }
 `
 export const Overlay = styled.div`
   position: absolute;
