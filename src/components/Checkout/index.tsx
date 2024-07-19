@@ -4,10 +4,10 @@ import * as S from "./styles";
 import { usePurchaseMutation } from "../../services/api";
 import * as Yup from "yup";
 import { useState } from "react";
-import { Cart } from "../Cart";
-import InputMask from 'react-input-mask'
-import { formatPrice, getAmount } from "../../utils";
 import { Cardapio } from "../../pages/Home/menu";
+import { formatPrice, getAmount } from "../../utils";
+import ReactInputMask from "react-input-mask";
+
 
 export const Checkout = ({
   setPayment,
@@ -16,7 +16,7 @@ export const Checkout = ({
   setPayment: (value: boolean) => void;
   items: Cardapio[]
 }) => {
-  const [purchase, {isSuccess, isLoading}] = usePurchaseMutation();
+  const [purchase, { isLoading}] = usePurchaseMutation();
   const [formAdress, setFormAdress] = useState(false);
 
   const formik = useFormik({
@@ -120,25 +120,23 @@ export const Checkout = ({
 
   return (
     <div className="container">
-      {isSuccess ? (
-        <p>dsa</p>
-      ) : (
+      
       <S.CheckoutContainer onSubmit={formik.handleSubmit}>
       {formAdress ? (
         <>
           <h2>Pagamento - Valor a pagar {formatPrice(getAmount(items))} </h2>
           <S.InputGroup className="marginTop">
-            <label htmlFor="nameCard">Nome do Cartão</label>
+            <label htmlFor="nameOwner">Nome do Cartão</label>
             <input
               type="text"
-              name="nameCard"
+              name="nameOwner"
               value={formik.values.nameOwner}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={checkoutInputHasError("nameCard") ? "error" : ""}
+              className={checkoutInputHasError("nameOwner") ? "error" : ""}
             />
             <label htmlFor="numberOwner">Número do Cartão</label>
-            <InputMask
+            <ReactInputMask
               type="text"
               name="numberOwner"
               value={formik.values.numberOwner}
@@ -150,7 +148,7 @@ export const Checkout = ({
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="cardCode">CVV</label>
-            <InputMask
+            <ReactInputMask
               type="text"
               name="cardCode"
               value={formik.values.cardCode}
@@ -163,7 +161,7 @@ export const Checkout = ({
          <div className="flex">
          <S.InputGroup>
             <label htmlFor="expiresMonth">Mês de vencimento</label>
-            <InputMask
+            <ReactInputMask
               type="text"
               name="expiresMonth"
               value={formik.values.expiresMonth}
@@ -175,7 +173,7 @@ export const Checkout = ({
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="expiresYear">Ano de vencimento</label>
-            <InputMask
+            <ReactInputMask
               type="text"
               name="expiresYear"
               value={formik.values.expiresYear}
@@ -227,7 +225,7 @@ export const Checkout = ({
           <div className="flex">
             <S.InputGroup>
               <label htmlFor="cep">CEP</label>
-              <InputMask
+              <ReactInputMask
                 type="text"
                 name="cep"
                 value={formik.values.cep}
@@ -239,7 +237,7 @@ export const Checkout = ({
             </S.InputGroup>
             <S.InputGroup>
               <label htmlFor="number">Número</label>
-              <InputMask
+              <ReactInputMask
                 type="text"
                 name="number"
                 value={formik.values.number}
@@ -272,9 +270,7 @@ export const Checkout = ({
         </>
       )}
     </S.CheckoutContainer>
-
-      )}
-    
+  
     </div>
   );
 };
