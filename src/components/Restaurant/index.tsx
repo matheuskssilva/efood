@@ -4,7 +4,9 @@ import close from '../../assets/close.png'
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { add, open } from "../../store/reducers/cart"
-import { Cardapio, Restaurant } from "../../pages/Home/menu"
+import { Cardapio } from "../../pages/Home/menu"
+import { formatPrice } from "../../utils"
+import { Loader } from "../Loader"
 
 
 export type Props = {
@@ -14,9 +16,10 @@ export type Props = {
     image: string
     price: number
     cardapio: Cardapio
+    isLoading: boolean
 }
 
-export const Restaurante = ({ title, description, image, porcao, price, cardapio }: Props) => {
+export const Restaurante = ({ title, description, image, porcao, price, cardapio, isLoading }: Props) => {
   const dispatch = useDispatch()
 
   const addCart = () => {
@@ -32,12 +35,8 @@ export const Restaurante = ({ title, description, image, porcao, price, cardapio
     }
   }
 
-  const formatPrice = (price = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      
-    }).format(price)
+  if(isLoading) {
+    return <Loader />
   }
 
   const showModal = () => {

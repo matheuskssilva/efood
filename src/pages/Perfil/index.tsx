@@ -4,6 +4,7 @@ import { Header } from "../../components/Header";
 import { Presentation } from "../../components/Presentation";
 import { RestaurantList } from "../../components/RestaurantList";
 import { useGetRestaurantSelectedQuery } from "../../services/api";
+import { Loader } from "../../components/Loader";
 
 type Params = {
   id: string;
@@ -11,7 +12,7 @@ type Params = {
 
 export const Perfil = () => {
   const { id } = useParams() as Params
-  const { data: restaurantFood } = useGetRestaurantSelectedQuery(id)
+  const { data: restaurantFood, isLoading: isLoadingSale } = useGetRestaurantSelectedQuery(id)
 
 
  
@@ -20,10 +21,10 @@ if(restaurantFood) {
     <>
       <Header />
       <Presentation restaurant={restaurantFood} />
-      <RestaurantList cardapio={restaurantFood.cardapio} />
+      <RestaurantList cardapio={restaurantFood.cardapio} isLoading={isLoadingSale}/>
     </>
   );
 }
- return <h4>loading...</h4>
+ return <Loader />
 
 };

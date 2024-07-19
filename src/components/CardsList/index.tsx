@@ -4,13 +4,13 @@ import { Cards } from "../Cards";
 import * as S from "./styles";
 
 type Props = {
-  restaurant: Restaurant[];
+  restaurant?: Restaurant[];
 };
 
 const CardsList = ({ restaurant }: Props) => (
   <S.Container>
     <S.CardContainer className="container">
-      {restaurant.map((restaurant) => (
+      {restaurant && restaurant.map((restaurant) => (
         <Cards
           id={restaurant.id}
           key={restaurant.id}

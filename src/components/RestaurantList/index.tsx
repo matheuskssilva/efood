@@ -3,13 +3,14 @@ import { Restaurante } from '../Restaurant';
 import * as S from './styles';
 
 type Props = {
-  cardapio: Cardapio[];
+  cardapio?: Cardapio[];
+  isLoading: boolean;
 };
 
-export const RestaurantList = ({ cardapio }: Props) => (
+export const RestaurantList = ({ cardapio, isLoading }: Props) => (
   <S.Container>
     <S.RestaurantContainer className='container'>
-      {cardapio.map((item) => (
+      {cardapio && cardapio.map((item) => (
         <Restaurante
           key={item.id}
           title={item.nome}
@@ -18,6 +19,7 @@ export const RestaurantList = ({ cardapio }: Props) => (
           porcao={item.porcao}
           price={item.preco}
           cardapio={item}
+          isLoading={isLoading}
         />
       ))}
     </S.RestaurantContainer>

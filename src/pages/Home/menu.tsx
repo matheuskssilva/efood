@@ -1,5 +1,5 @@
-
 import CardsList from "../../components/CardsList";
+import { Loader } from "../../components/Loader";
 import { useGetRestaurantsQuery } from "../../services/api";
 
 export type Cardapio = {
@@ -23,10 +23,10 @@ export type Restaurant = {
 };
 
 export const MenuList = () => {
-  const { data: restaurants } = useGetRestaurantsQuery();
+  const { data: restaurants, isLoading: isLoadingSale } = useGetRestaurantsQuery();
 
-  if (!restaurants) {
-    return <h4>Loading...</h4>;
+  if (isLoadingSale) {
+    return <Loader />;
   }
 
   return (
