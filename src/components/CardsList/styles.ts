@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../styles";
 
 export const CardContainer = styled.div`
     display: grid;
@@ -6,6 +7,12 @@ export const CardContainer = styled.div`
     column-gap: 80px;
     row-gap: 48px;
     
+
+    @media (max-width: ${breakpoints.mobile}) {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 24px;  
+    }
 `
 
 export const Container = styled.div`
@@ -14,4 +21,9 @@ export const Container = styled.div`
     margin: 0 auto;
     padding-top: 80px;
     padding-bottom: 120px;
+
+    @media (max-width: ${breakpoints.mobile}) {
+        max-width: 300px;
+        width: 100%;
+    }
 `

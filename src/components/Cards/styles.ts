@@ -1,6 +1,6 @@
 // styles.ts
 import styled from "styled-components";
-import { colors } from "../../styles";
+import { breakpoints, colors } from "../../styles";
 
 export const Card = styled.div`
   max-width: 472px;
@@ -11,6 +11,11 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   
+
+  @media (max-width: ${breakpoints.mobile}) {
+        max-width: 300px;
+        width: 100%;
+    }
 `;
 
 export const ImageCard = styled.img`
@@ -21,6 +26,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 7px 8px;
+
 `;
 
 

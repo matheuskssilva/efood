@@ -8,6 +8,14 @@ export const colors = {
     rose: '#E66767',
     red: '##FF002B'
   }
+
+export const breakpoints = {
+    desktop: '1024px',
+    tablet: '821px',
+    mobile: '430px',
+}
+
+
 export const GlobalCss = createGlobalStyle`
     * {
         margin: 0;
@@ -21,5 +29,7 @@ export const GlobalCss = createGlobalStyle`
         background-color: ${colors.white2};
         color: ${colors.rose};
     }
+
+
 
 `
